@@ -1,144 +1,362 @@
-<!doctype html>
+<!DOCTYPE html>
 <html lang="es">
 <head>
-  <meta charset="utf-8">
-  <meta name="viewport" content="width=device-width,initial-scale=1">
-  <title>Mi Portafolio</title>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Portafolio Pro - Estadística Espacial 🗺️</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
 
-  <!-- ✅ Estilos incrustados -->
-  <style>
-    * {
-      box-sizing: border-box;
-      margin: 0;
-      padding: 0;
-    }
-    body {
-      font-family: "Segoe UI", Arial, sans-serif;
-      line-height: 1.6;
-      background: #f4f6f8;
-      color: #333;
-    }
+    <style>
+        /* 1. Variables y Reset Básico */
+        :root {
+            --color-primario: #0077B6; /* Azul Oscuro de LinkedIn/Profesional */
+            --color-secundario: #00B4D8; /* Azul Claro/Cian */
+            --color-acento: #48CAE4; /* Azul Neón, para destacar */
+            --color-fondo-dark: #2a3848; /* Fondo Oscuro de la sección principal */
+            --color-fondo-claro: #f8f9fa;
+            --color-texto-claro: #e9ecef;
+            --sombra-card: 0 4px 15px rgba(0, 0, 0, 0.1);
+        }
 
-    /* Barra de navegación */
-    nav {
-      background: #4CAF50;
-      padding: 15px;
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-      position: sticky;
-      top: 0;
-      z-index: 100;
-    }
-    nav h1 {
-      color: white;
-      font-size: 1.4rem;
-    }
-    nav ul {
-      list-style: none;
-      display: flex;
-      gap: 20px;
-    }
-    nav a {
-      color: white;
-      text-decoration: none;
-      font-weight: bold;
-      transition: color 0.3s;
-    }
-    nav a:hover {
-      color: #d9ffd9;
-    }
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
 
-    /* Secciones */
-    section {
-      padding: 60px 20px;
-      max-width: 900px;
-      margin: auto;
-    }
-    section h2 {
-      margin-bottom: 20px;
-      font-size: 1.8rem;
-      color: #4CAF50;
-    }
-    section p {
-      margin-bottom: 15px;
-      font-size: 1.1rem;
-    }
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            color: #333;
+            line-height: 1.6;
+            background-color: var(--color-fondo-claro);
+        }
 
-    /* Tareas */
-    .tarea {
-      background: white;
-      padding: 20px;
-      margin: 10px 0;
-      border-radius: 8px;
-      box-shadow: 0 2px 6px rgba(0,0,0,0.1);
-      transition: transform 0.2s;
-    }
-    .tarea:hover {
-      transform: translateY(-4px);
-    }
-    .tarea h3 {
-      margin-bottom: 10px;
-      color: #333;
-    }
-    .tarea p {
-      color: #666;
-    }
+        .container {
+            width: 90%;
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 15px;
+        }
 
-    /* Footer */
-    footer {
-      text-align: center;
-      padding: 20px;
-      background: #333;
-      color: white;
-      margin-top: 40px;
-    }
-  </style>
+        /* 2. Barra de Navegación (Navbar) */
+        .navbar {
+            background-color: var(--color-primario);
+            color: white;
+            padding: 15px 0;
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.2);
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .navbar .logo {
+            font-size: 1.5em;
+            font-weight: 700;
+            margin-left: 50px;
+        }
+
+        .navbar nav a {
+            color: white;
+            text-decoration: none;
+            padding: 8px 15px;
+            margin: 0 10px;
+            border-radius: 5px;
+            transition: background-color 0.3s;
+        }
+
+        .navbar nav a:hover, .navbar nav a.active {
+            background-color: var(--color-secundario);
+        }
+
+        /* 3. Sección Principal (Hero) */
+        .hero-map {
+            background: linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)), url('https://via.placeholder.com/1400x500/0077B6/ffffff?text=Fondo+de+Mapa+Geoespacial') no-repeat center center/cover;
+            height: 400px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            color: white;
+            text-align: center;
+        }
+
+        .hero-content h1 {
+            font-size: 3em;
+            margin-bottom: 20px;
+            text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.7);
+        }
+
+        .btn-projects {
+            background-color: var(--color-acento);
+            color: #2a3848;
+            text-decoration: none;
+            padding: 12px 30px;
+            border-radius: 50px;
+            font-weight: 700;
+            transition: transform 0.3s, background-color 0.3s;
+            box-shadow: var(--sombra-card);
+        }
+
+        .btn-projects:hover {
+            background-color: var(--color-secundario);
+            color: white;
+            transform: translateY(-2px);
+        }
+
+        /* 4. Contenido Principal (Main) y Grid */
+        .main-content-dark {
+            background-color: var(--color-fondo-dark);
+            color: var(--color-texto-claro);
+            padding: 40px 0;
+        }
+        
+        /* Modificación: Grid ahora es de 2 columnas principales */
+        .grid-2-section {
+            display: grid;
+            grid-template-columns: 2fr 1.5fr; /* Proyectos (más ancho) / Carga y Mapa (estrecho) */
+            gap: 40px;
+            padding: 20px 0;
+        }
+        
+        /* Contenedor de la columna derecha, ahora apila Carga y Mapa */
+        .right-column-stack {
+            display: flex;
+            flex-direction: column;
+            gap: 40px;
+        }
+
+
+        /* 5. Estilos de Tarjetas (Cards) */
+        .card {
+            background-color: var(--color-tarjeta, white);
+            color: #333;
+            padding: 20px;
+            border-radius: 10px;
+            box-shadow: var(--sombra-card);
+            transition: transform 0.3s;
+        }
+
+        .card h2 {
+            color: var(--color-secundario);
+            margin-bottom: 25px;
+            border-bottom: 2px solid var(--color-secundario);
+            padding-bottom: 10px;
+        }
+
+        /* Tarjetas de Proyecto */
+        .project-card {
+            margin-bottom: 25px;
+            text-align: left;
+        }
+        
+        .project-card img {
+            width: 100%;
+            height: auto;
+            border-radius: 8px;
+            margin-bottom: 15px;
+        }
+        
+        .project-card h3 {
+            color: var(--color-primario);
+            font-size: 1.5em;
+            margin-bottom: 10px;
+        }
+
+        .btn-learn {
+            display: inline-block;
+            background-color: var(--color-primario);
+            color: white;
+            text-decoration: none;
+            padding: 8px 15px;
+            border-radius: 5px;
+            margin-top: 10px;
+            transition: background-color 0.3s;
+        }
+
+        .btn-learn:hover {
+            background-color: var(--color-secundario);
+        }
+
+        /* 6. Sección de Carga (Upload) */
+        .data-upload-section h2 {
+            color: var(--color-acento);
+            border-bottom: 2px solid var(--color-acento);
+            text-align: center;
+        }
+        
+        .upload-container {
+            background-color: #334455; /* Fondo más oscuro para contraste */
+            color: white;
+            padding: 30px;
+            display: flex;
+            flex-direction: column;
+            gap: 20px;
+        }
+
+        .unit-box {
+            background-color: #4a5d73; /* Fondo de unidad */
+            padding: 20px;
+            border-radius: 8px;
+            border: 2px dashed var(--color-acento);
+        }
+        
+        .unit-box h3 {
+            color: var(--color-acento);
+            margin-bottom: 10px;
+        }
+
+        /* Ocultar el input de archivo por defecto */
+        .upload-container input[type="file"] {
+            display: none;
+        }
+
+        /* Estilo del botón personalizado de carga */
+        .custom-file-upload {
+            border: 2px solid var(--color-secundario);
+            display: inline-block;
+            padding: 10px 20px;
+            cursor: pointer;
+            border-radius: 5px;
+            background-color: var(--color-primario);
+            color: white;
+            font-weight: bold;
+            transition: background-color 0.3s, border-color 0.3s;
+        }
+
+        .custom-file-upload:hover {
+            background-color: var(--color-secundario);
+            border-color: var(--color-acento);
+        }
+
+        /* 7. Nuevo Espacio para Mapa Destacado */
+        .map-showcase-card {
+            background-color: var(--color-tarjeta, white);
+            padding: 0; /* Quitar padding para que la imagen ocupe todo */
+            border-radius: 10px;
+            overflow: hidden; /* Asegura que la imagen no se salga del borde redondeado */
+        }
+        
+        .map-showcase-card h2 {
+            background-color: var(--color-primario);
+            color: white;
+            padding: 15px 20px;
+            margin: 0;
+            font-size: 1.4em;
+            border-bottom: none;
+        }
+        
+        .map-showcase-card img {
+            width: 100%;
+            height: 300px; /* Altura fija para hacerla visible */
+            object-fit: cover; /* Asegura que la imagen cubra el espacio sin distorsionarse */
+            display: block;
+        }
+
+        /* 8. Pie de Página */
+        .footer {
+            background-color: #333;
+            color: var(--color-texto-claro);
+            text-align: center;
+            padding: 20px 0;
+            font-size: 0.9em;
+        }
+
+        .footer .social-links a {
+            color: var(--color-acento);
+            margin: 0 10px;
+            font-size: 1.2em;
+            transition: color 0.3s;
+        }
+
+        .footer .social-links a:hover {
+            color: white;
+        }
+    </style>
 </head>
+
 <body>
+    
+    <header class="navbar">
+        <div class="logo" style="margin-left: 15px;">**GeoStats Portfolio** 🛰️</div>
+        <nav style="margin-right: 15px;">
+            <a href="#home" class="active">Inicio</a>
+            <a href="#projects">Proyectos</a>
+            <a href="#contact">Contacto</a>
+        </nav>
+    </header>
 
-  <!-- ✅ Navbar -->
-  <nav>
-    <h1>Mi Portafolio</h1>
-    <ul>
-      <li><a href="#sobre-mi">Lisbet Quenta</a></li>
-      <li><a href="#tareas">Tareas</a></li>
-    </ul>
-  </nav>
+    <section class="hero-map" id="home">
+        <div class="hero-content">
+            <h1>Explorando Patrones. Prediciendo el Futuro.</h1>
+            <a href="https://github.com/TuUsuario" target="_blank" class="btn-projects">Ver Repositorio de Código</a>
+        </div>
+    </section>
 
-  <!-- ✅ Sección Sobre mí -->
-  <section id="sobre-mi">
-    <h2>Sobre mí</h2>
-    <p>Hola, soy Lisbet, estudiante de ESTADISTIC A ESPSCIAL.</p>
-    <p>Este portafolio es un espacio donde comparto mis aprendizajes y tareas desarrolladas a lo largo del curso.</p>
-  </section>
+    <main class="main-content-dark" id="projects">
+        <div class="container grid-2-section">
+            
+            <section class="featured-projects">
+                <h2>Proyectos Destacados (Unidad 1)</h2>
+                
+                <div class="card project-card">
+                    <img src="https://via.placeholder.com/350x200/4a90e2/ffffff?text=LISA+Cluster+Map" alt="Análisis de Clusters LISA">
+                    <h3>Análisis de Clusters de Densidad (LISA) 🚨</h3>
+                    <p>Aplicación de Moran Local (LISA) para identificar **focos calientes** (hotspots) de delitos o variables sociales. Fundamento de la Unidad 1.</p>
+                    <a href="enlace_a_tu_pdf_o_notebook_1.html" target="_blank" class="btn-learn">Ver Detalle</a> 
+                </div>
 
-  <!-- ✅ Sección Tareas -->
-  <section id="tareas">
-    <h2>Tareas</h2>
-    <div class="tarea">
-      <h3>Tarea 1: Análisis de datos</h3>
-      <p>Descripción breve de lo que hiciste en esta tarea.</p>
-    </div>
-    <div class="tarea">
-      <h3>Tarea 2: Investigación</h3>
-      <p>Explicación breve de la actividad desarrollada.</p>
-    </div>
-    <div class="tarea">
-      <h3>Tarea 3: Proyecto final</h3>
-      <p>Resumen de tu trabajo más importante.</p>
-    </div>
-  </section>
+                <div class="card project-card bottom-project">
+                    <img src="https://via.placeholder.com/350x200/2a3848/ffffff?text=Spatial+Weights+Matrix" alt="Matriz de Pesos Espaciales">
+                    <h3>Construcción de Matriz de Pesos Espaciales</h3>
+                    <p>Código para crear matrices de contigüidad y distancia (K-vecinos) en R (`spdep`) o Python (`pysal`).</p>
+                    <a href="enlace_a_tu_pdf_o_notebook_2.html" target="_blank" class="btn-learn">Ver Código</a>
+                </div>
+            </section>
 
-  <!-- ✅ Footer -->
-  <footer>
-    © <span id="anio"></span> [Tu Nombre] - Portafolio
-  </footer>
+            <div class="right-column-stack">
+                
+                <section class="data-upload-section">
+                    <h2>Explorar Mis Unidades</h2>
 
-  <!-- ✅ JavaScript -->
-  <script>
-    // Año automático
-    document.getElementById("anio").textContent = new Date().getFullYear();
-  </script>
+                    <div class="upload-container card">
+                        
+                        <div class="unit-box unit-a">
+                            <h3>Unidad 1: Autocorrelación & Patrones</h3>
+                            <p>Modelos de dependencia espacial, I de Moran y clustering. (Vector).</p>
+                            <label for="upload-a" class="custom-file-upload">
+                                <i class="fas fa-eye"></i> **¡Ver Proyectos Subidos!**
+                            </label>
+                            <input type="file" id="upload-a" name="files-a[]" multiple accept=".shp,.geojson,.csv,.kml,.zip">
+                        </div>
+
+                        <div class="unit-box unit-b" style="opacity: 0.6;">
+                            <h3>Unidad 2: Geoestadística & Raster</h3>
+                            <p>Modelos de Variograma y Kriging. Interpolación de datos continuos. (Raster).</p>
+                            <label for="upload-b" class="custom-file-upload" style="background-color: #6c757d; border-color: #6c757d; cursor: default;">
+                                <i class="fas fa-lock"></i> Contenido Próximamente
+                            </label>
+                            <input type="file" id="upload-b" name="files-b[]" multiple accept=".tif,.tiff,.jpg,.png" disabled>
+                        </div>
+                    </div>
+                </section>
+                
+                <section class="map-showcase">
+                    <div class="card map-showcase-card">
+                        <h2>Mapa Destacado del Proyecto</h2>
+                        <img src="https://via.placeholder.com/600x300/48CAE4/2a3848?text=TU+MAPA+AQUI" 
+                             alt="Mapa Choropleth de Correlación Espacial">
+                    </div>
+                </section>
+
+            </div> </div>
+    </main>
+    
+    <footer class="footer">
+        <p>GeoStats Design &copy; 2024. Construido con HTML/CSS puro.</p>
+        <div class="social-links">
+            <a href="https://twitter.com/TuUsuario" target="_blank"><i class="fab fa-twitter"></i></a>
+            <a href="https://www.linkedin.com/in/TuPerfil" target="_blank"><i class="fab fa-linkedin-in"></i></a>
+            <a href="https://github.com/TuUsuario" target="_blank"><i class="fab fa-github"></i></a>
+        </div>
+    </footer>
 </body>
 </html>
