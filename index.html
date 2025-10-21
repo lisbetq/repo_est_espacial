@@ -9,10 +9,10 @@
     <style>
         /* 1. Variables y Reset Básico */
         :root {
-            --color-primario: #0077B6; /* Azul Oscuro de LinkedIn/Profesional */
-            --color-secundario: #00B4D8; /* Azul Claro/Cian */
-            --color-acento: #48CAE4; /* Azul Neón, para destacar */
-            --color-fondo-dark: #2a3848; /* Fondo Oscuro de la sección principal */
+            --color-primario: #0077B6;
+            --color-secundario: #00B4D8;
+            --color-acento: #48CAE4;
+            --color-fondo-dark: #2a3848;
             --color-fondo-claro: #f8f9fa;
             --color-texto-claro: #e9ecef;
             --sombra-card: 0 4px 15px rgba(0, 0, 0, 0.1);
@@ -38,7 +38,7 @@
             padding: 0 15px;
         }
 
-        /* 2. Barra de Navegación (Navbar) */
+        /* 2. Barra de Navegación */
         .navbar {
             background-color: var(--color-primario);
             color: white;
@@ -68,7 +68,7 @@
             background-color: var(--color-secundario);
         }
 
-        /* 3. Sección Principal (Hero) */
+        /* 3. Sección Hero */
         .hero-map {
             background: linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)), url('https://via.placeholder.com/1400x500/0077B6/ffffff?text=Fondo+de+Mapa+Geoespacial') no-repeat center center/cover;
             height: 400px;
@@ -102,32 +102,29 @@
             transform: translateY(-2px);
         }
 
-        /* 4. Contenido Principal (Main) y Grid */
+        /* 4. Contenido Principal */
         .main-content-dark {
             background-color: var(--color-fondo-dark);
             color: var(--color-texto-claro);
             padding: 40px 0;
         }
         
-        /* Modificación: Grid ahora es de 2 columnas principales */
         .grid-2-section {
             display: grid;
-            grid-template-columns: 2fr 1.5fr; /* Proyectos (más ancho) / Carga y Mapa (estrecho) */
+            grid-template-columns: 2fr 1.5fr;
             gap: 40px;
             padding: 20px 0;
         }
         
-        /* Contenedor de la columna derecha, ahora apila Carga y Mapa */
         .right-column-stack {
             display: flex;
             flex-direction: column;
             gap: 40px;
         }
 
-
-        /* 5. Estilos de Tarjetas (Cards) */
+        /* 5. Tarjetas */
         .card {
-            background-color: var(--color-tarjeta, white);
+            background-color: white;
             color: #333;
             padding: 20px;
             border-radius: 10px;
@@ -160,23 +157,37 @@
             font-size: 1.5em;
             margin-bottom: 10px;
         }
+        
+        .project-card p {
+            margin-bottom: 15px;
+            line-height: 1.6;
+        }
 
         .btn-learn {
             display: inline-block;
             background-color: var(--color-primario);
-            color: white;
+            color: white !important;
             text-decoration: none;
-            padding: 8px 15px;
+            padding: 10px 20px;
             border-radius: 5px;
             margin-top: 10px;
-            transition: background-color 0.3s;
+            margin-right: 10px;
+            transition: background-color 0.3s, transform 0.2s;
+            font-weight: 600;
+            box-shadow: 0 2px 8px rgba(0, 119, 182, 0.3);
         }
 
         .btn-learn:hover {
             background-color: var(--color-secundario);
+            transform: translateY(-2px);
+            box-shadow: 0 4px 12px rgba(0, 180, 216, 0.4);
+        }
+        
+        .btn-learn i {
+            margin-right: 6px;
         }
 
-        /* 6. Sección de Carga (Upload) */
+        /* 6. Sección de Carga */
         .data-upload-section h2 {
             color: var(--color-acento);
             border-bottom: 2px solid var(--color-acento);
@@ -184,7 +195,7 @@
         }
         
         .upload-container {
-            background-color: #334455; /* Fondo más oscuro para contraste */
+            background-color: #334455;
             color: white;
             padding: 30px;
             display: flex;
@@ -193,7 +204,7 @@
         }
 
         .unit-box {
-            background-color: #4a5d73; /* Fondo de unidad */
+            background-color: #4a5d73;
             padding: 20px;
             border-radius: 8px;
             border: 2px dashed var(--color-acento);
@@ -204,12 +215,10 @@
             margin-bottom: 10px;
         }
 
-        /* Ocultar el input de archivo por defecto (aunque ya no se use) */
         .upload-container input[type="file"] {
             display: none;
         }
 
-        /* Estilo del botón personalizado de descarga/enlace */
         .custom-file-upload {
             border: 2px solid var(--color-secundario);
             display: inline-block;
@@ -219,7 +228,7 @@
             background-color: var(--color-primario);
             color: white;
             font-weight: bold;
-            text-decoration: none; /* Asegura que el enlace se vea como botón */
+            text-decoration: none;
             transition: background-color 0.3s, border-color 0.3s;
         }
 
@@ -228,9 +237,9 @@
             border-color: var(--color-acento);
         }
 
-        /* 7. Espacio para Mapa Destacado */
+        /* 7. Mapa Destacado */
         .map-showcase-card {
-            background-color: var(--color-tarjeta, white);
+            background-color: white;
             padding: 0; 
             border-radius: 10px;
             overflow: hidden; 
@@ -277,7 +286,7 @@
 <body>
     
     <header class="navbar">
-        <div class="logo" style="margin-left: 15px;">**GeoStats Portfolio** 🛰️</div>
+        <div class="logo" style="margin-left: 15px;">GeoStats Portfolio 🛰️</div>
         <nav style="margin-right: 15px;">
             <a href="#home" class="active">Inicio</a>
             <a href="#projects">Proyectos</a>
@@ -296,20 +305,101 @@
         <div class="container grid-2-section">
             
             <section class="featured-projects">
-                <h2>Proyectos Destacados (Unidad 1)</h2>
+                <h2>Trabajos de la Unidad 1: Autocorrelación Espacial</h2>
                 
+                <!-- Tema 1 -->
                 <div class="card project-card">
-                    <img src="https://via.placeholder.com/350x200/4a90e2/ffffff?text=LISA+Cluster+Map" alt="Análisis de Clusters LISA">
-                    <h3>Análisis de Clusters de Densidad (LISA) 🚨</h3>
-                    <p>Aplicación de Moran Local (LISA) para identificar **focos calientes** (hotspots) de delitos o variables sociales. Fundamento de la Unidad 1.</p>
-                    <a href="https://github.com/lisbetq/repo_est_espacial" target="_blank" class="btn-learn">Ver Repositorio</a> 
+                    <img src="https://via.placeholder.com/350x200/0077B6/ffffff?text=Posicionamiento" alt="Posicionamiento">
+                    <h3>📍 Tema 1: Posicionamiento de Información</h3>
+                    <p>Fundamentos de georeferenciación y sistemas de coordenadas espaciales.</p>
+                    <a href="https://github.com/lisbetq/repo_est_espacial/raw/main/Unidad_1/Tema_01_Posicionamiento.pdf" class="btn-learn" download>
+                        <i class="fas fa-file-pdf"></i> PDF
+                    </a>
+                    <a href="https://github.com/lisbetq/repo_est_espacial/raw/main/Unidad_1/Tema_01_codigo.R" class="btn-learn" download>
+                        <i class="fas fa-code"></i> Código R
+                    </a>
                 </div>
 
-                <div class="card project-card bottom-project">
-                    <img src="https://via.placeholder.com/350x200/2a3848/ffffff?text=Spatial+Weights+Matrix" alt="Matriz de Pesos Espaciales">
-                    <h3>Construcción de Matriz de Pesos Espaciales</h3>
-                    <p>Código para crear matrices de contigüidad y distancia (K-vecinos) en R (`spdep`) o Python (`pysal`).</p>
-                    <a href="https://github.com/lisbetq/repo_est_espacial" target="_blank" class="btn-learn">Ver Código</a>
+                <!-- Tema 2 -->
+                <div class="card project-card">
+                    <img src="https://via.placeholder.com/350x200/00B4D8/ffffff?text=Bootstrap" alt="Bootstrap">
+                    <h3>🎲 Tema 2: Muestreo Bootstrap</h3>
+                    <p>Técnicas de remuestreo para análisis de incertidumbre espacial.</p>
+                    <a href="https://github.com/lisbetq/repo_est_espacial/raw/main/Unidad_1/Tema_02_Bootstrap.pdf" class="btn-learn" download>
+                        <i class="fas fa-file-pdf"></i> PDF
+                    </a>
+                    <a href="https://github.com/lisbetq/repo_est_espacial/raw/main/Unidad_1/Tema_02_codigo.R" class="btn-learn" download>
+                        <i class="fas fa-code"></i> Código R
+                    </a>
+                </div>
+
+                <!-- Tema 3 -->
+                <div class="card project-card">
+                    <img src="https://via.placeholder.com/350x200/48CAE4/ffffff?text=Gaussian+Fields" alt="GRF">
+                    <h3>🌐 Tema 3: Gaussian Random Fields</h3>
+                    <p>Modelado de campos aleatorios gaussianos para análisis espacial.</p>
+                    <a href="https://github.com/lisbetq/repo_est_espacial/raw/main/Unidad_1/Tema_03_GRF.pdf" class="btn-learn" download>
+                        <i class="fas fa-file-pdf"></i> PDF
+                    </a>
+                    <a href="https://github.com/lisbetq/repo_est_espacial/raw/main/Unidad_1/Tema_03_codigo.R" class="btn-learn" download>
+                        <i class="fas fa-code"></i> Código R
+                    </a>
+                </div>
+
+                <!-- Tema 4 -->
+                <div class="card project-card">
+                    <img src="https://via.placeholder.com/350x200/0077B6/ffffff?text=Research+Statement" alt="Research">
+                    <h3>📄 Tema 4: Research Statement</h3>
+                    <p>Declaración de investigación sobre estadística espacial (3 páginas).</p>
+                    <a href="https://github.com/lisbetq/repo_est_espacial/raw/main/Unidad_1/Tema_04_Research_Statement.pdf" class="btn-learn" download>
+                        <i class="fas fa-file-pdf"></i> Descargar PDF
+                    </a>
+                </div>
+
+                <!-- Tema 5 -->
+                <div class="card project-card">
+                    <img src="https://via.placeholder.com/350x200/2a3848/ffffff?text=GitHub+Repository" alt="GitHub">
+                    <h3>💻 Tema 5: Repositorio de GitHub</h3>
+                    <p>Gestión y documentación de proyectos de análisis espacial.</p>
+                    <a href="https://github.com/lisbetq/repo_est_espacial" target="_blank" class="btn-learn">
+                        <i class="fab fa-github"></i> Ver Repositorio
+                    </a>
+                </div>
+
+                <!-- Tema 6 -->
+                <div class="card project-card">
+                    <img src="https://via.placeholder.com/350x200/00B4D8/ffffff?text=Autocorrelacion" alt="Autocorrelación">
+                    <h3>🔗 Tema 6: Aplicación de Autocorrelación Espacial</h3>
+                    <p>Implementación práctica de análisis de autocorrelación en datos reales.</p>
+                    <a href="https://github.com/lisbetq/repo_est_espacial/raw/main/Unidad_1/Tema_06_Autocorrelacion.pdf" class="btn-learn" download>
+                        <i class="fas fa-file-pdf"></i> PDF
+                    </a>
+                    <a href="https://github.com/lisbetq/repo_est_espacial/raw/main/Unidad_1/Tema_06_codigo.R" class="btn-learn" download>
+                        <i class="fas fa-code"></i> Código R
+                    </a>
+                </div>
+
+                <!-- Tema 7 -->
+                <div class="card project-card">
+                    <img src="https://via.placeholder.com/350x200/48CAE4/ffffff?text=Moran+Geary+Hotspots" alt="Métodos">
+                    <h3>📊 Tema 7: Ejemplificación de Métodos Espaciales</h3>
+                    <p>Matrices de Pesos, Índice de Moran, Geary y Análisis de Hotspots.</p>
+                    <a href="https://github.com/lisbetq/repo_est_espacial/raw/main/Unidad_1/Tema_07_Metodos_Espaciales.pdf" class="btn-learn" download>
+                        <i class="fas fa-file-pdf"></i> PDF
+                    </a>
+                    <a href="https://github.com/lisbetq/repo_est_espacial/raw/main/Unidad_1/Tema_07_codigo.R" class="btn-learn" download>
+                        <i class="fas fa-code"></i> Código R
+                    </a>
+                </div>
+
+                <!-- Tema 8 -->
+                <div class="card project-card">
+                    <img src="https://via.placeholder.com/350x200/0077B6/ffffff?text=Paper+Evidence" alt="Paper">
+                    <h3>📑 Tema 8: Evidencia de Paper</h3>
+                    <p>Documentación y resultados de investigación publicada.</p>
+                    <a href="https://github.com/lisbetq/repo_est_espacial/raw/main/Unidad_1/Tema_08_Paper.pdf" class="btn-learn" download>
+                        <i class="fas fa-file-pdf"></i> Descargar Paper
+                    </a>
                 </div>
             </section>
 
@@ -320,14 +410,6 @@
 
                     <div class="upload-container card">
                         
-                        <div class="unit-box unit-a">
-                            <h3>Unidad 1: Autocorrelación & Patrones</h3>
-                            <p>Modelos de dependencia espacial, I de Moran y clustering. (Vector).</p>
-                            <a href="https://github.com/lisbetq/repo_est_espacial/archive/refs/heads/main.zip" class="custom-file-upload" download>
-                                <i class="fas fa-download"></i> **Descargar Archivos de la Unidad**
-                            </a>
-                        </div>
-
                         <div class="unit-box unit-b" style="opacity: 0.6;">
                             <h3>Unidad 2: Geoestadística & Raster</h3>
                             <p>Modelos de Variograma y Kriging. Interpolación de datos continuos. (Raster).</p>
@@ -335,6 +417,14 @@
                                 <i class="fas fa-lock"></i> Contenido Próximamente
                             </label>
                             <input type="file" id="upload-b" name="files-b[]" multiple accept=".tif,.tiff,.jpg,.png" disabled>
+                        </div>
+
+                        <div class="unit-box unit-a">
+                            <h3>Unidad 1: Autocorrelación & Patrones</h3>
+                            <p>Modelos de dependencia espacial, I de Moran y clustering. (Vector).</p>
+                            <a href="https://github.com/lisbetq/repo_est_espacial/archive/refs/heads/main.zip" class="custom-file-upload" download>
+                                <i class="fas fa-download"></i> Descargar Archivos de la Unidad
+                            </a>
                         </div>
                     </div>
                 </section>
@@ -347,14 +437,15 @@
                     </div>
                 </section>
 
-            </div> </div>
+            </div>
+        </div>
     </main>
     
     <footer class="footer">
         <p>GeoStats Design &copy; 2024. Portafolio de Lisbet Q.</p>
         <div class="social-links">
             <a href="https://github.com/lisbetq" target="_blank"><i class="fab fa-github"></i></a>
-            </div>
+        </div>
     </footer>
 </body>
 </html>
