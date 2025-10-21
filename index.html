@@ -204,12 +204,12 @@
             margin-bottom: 10px;
         }
 
-        /* Ocultar el input de archivo por defecto */
+        /* Ocultar el input de archivo por defecto (aunque ya no se use) */
         .upload-container input[type="file"] {
             display: none;
         }
 
-        /* Estilo del botón personalizado de carga */
+        /* Estilo del botón personalizado de descarga/enlace */
         .custom-file-upload {
             border: 2px solid var(--color-secundario);
             display: inline-block;
@@ -219,6 +219,7 @@
             background-color: var(--color-primario);
             color: white;
             font-weight: bold;
+            text-decoration: none; /* Asegura que el enlace se vea como botón */
             transition: background-color 0.3s, border-color 0.3s;
         }
 
@@ -227,12 +228,12 @@
             border-color: var(--color-acento);
         }
 
-        /* 7. Nuevo Espacio para Mapa Destacado */
+        /* 7. Espacio para Mapa Destacado */
         .map-showcase-card {
             background-color: var(--color-tarjeta, white);
-            padding: 0; /* Quitar padding para que la imagen ocupe todo */
+            padding: 0; 
             border-radius: 10px;
-            overflow: hidden; /* Asegura que la imagen no se salga del borde redondeado */
+            overflow: hidden; 
         }
         
         .map-showcase-card h2 {
@@ -246,8 +247,8 @@
         
         .map-showcase-card img {
             width: 100%;
-            height: 300px; /* Altura fija para hacerla visible */
-            object-fit: cover; /* Asegura que la imagen cubra el espacio sin distorsionarse */
+            height: 300px; 
+            object-fit: cover; 
             display: block;
         }
 
@@ -280,14 +281,14 @@
         <nav style="margin-right: 15px;">
             <a href="#home" class="active">Inicio</a>
             <a href="#projects">Proyectos</a>
-            <a href="#contact">Contacto</a>
+            <a href="https://github.com/lisbetq" target="_blank">GitHub</a>
         </nav>
     </header>
 
     <section class="hero-map" id="home">
         <div class="hero-content">
             <h1>Explorando Patrones. Prediciendo el Futuro.</h1>
-            <a href="https://github.com/TuUsuario" target="_blank" class="btn-projects">Ver Repositorio de Código</a>
+            <a href="https://github.com/lisbetq/repo_est_espacial" target="_blank" class="btn-projects">Ver Repositorio de Código</a>
         </div>
     </section>
 
@@ -301,14 +302,14 @@
                     <img src="https://via.placeholder.com/350x200/4a90e2/ffffff?text=LISA+Cluster+Map" alt="Análisis de Clusters LISA">
                     <h3>Análisis de Clusters de Densidad (LISA) 🚨</h3>
                     <p>Aplicación de Moran Local (LISA) para identificar **focos calientes** (hotspots) de delitos o variables sociales. Fundamento de la Unidad 1.</p>
-                    <a href="enlace_a_tu_pdf_o_notebook_1.html" target="_blank" class="btn-learn">Ver Detalle</a> 
+                    <a href="https://github.com/lisbetq/repo_est_espacial" target="_blank" class="btn-learn">Ver Repositorio</a> 
                 </div>
 
                 <div class="card project-card bottom-project">
                     <img src="https://via.placeholder.com/350x200/2a3848/ffffff?text=Spatial+Weights+Matrix" alt="Matriz de Pesos Espaciales">
                     <h3>Construcción de Matriz de Pesos Espaciales</h3>
                     <p>Código para crear matrices de contigüidad y distancia (K-vecinos) en R (`spdep`) o Python (`pysal`).</p>
-                    <a href="enlace_a_tu_pdf_o_notebook_2.html" target="_blank" class="btn-learn">Ver Código</a>
+                    <a href="https://github.com/lisbetq/repo_est_espacial" target="_blank" class="btn-learn">Ver Código</a>
                 </div>
             </section>
 
@@ -322,10 +323,9 @@
                         <div class="unit-box unit-a">
                             <h3>Unidad 1: Autocorrelación & Patrones</h3>
                             <p>Modelos de dependencia espacial, I de Moran y clustering. (Vector).</p>
-                            <label for="upload-a" class="custom-file-upload">
-                                <i class="fas fa-eye"></i> **¡Ver Proyectos Subidos!**
-                            </label>
-                            <input type="file" id="upload-a" name="files-a[]" multiple accept=".shp,.geojson,.csv,.kml,.zip">
+                            <a href="https://github.com/lisbetq/repo_est_espacial/archive/refs/heads/main.zip" class="custom-file-upload" download>
+                                <i class="fas fa-download"></i> **Descargar Archivos de la Unidad**
+                            </a>
                         </div>
 
                         <div class="unit-box unit-b" style="opacity: 0.6;">
@@ -351,12 +351,10 @@
     </main>
     
     <footer class="footer">
-        <p>GeoStats Design &copy; 2024. Construido con HTML/CSS puro.</p>
+        <p>GeoStats Design &copy; 2024. Portafolio de Lisbet Q.</p>
         <div class="social-links">
-            <a href="https://twitter.com/TuUsuario" target="_blank"><i class="fab fa-twitter"></i></a>
-            <a href="https://www.linkedin.com/in/TuPerfil" target="_blank"><i class="fab fa-linkedin-in"></i></a>
-            <a href="https://github.com/TuUsuario" target="_blank"><i class="fab fa-github"></i></a>
-        </div>
+            <a href="https://github.com/lisbetq" target="_blank"><i class="fab fa-github"></i></a>
+            </div>
     </footer>
 </body>
 </html>
